@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sihan Sikder | Data-Driven Facebook Ads for E-commerce | Increase ROAS & Reduce Ad Waste</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS RESET & BASE STYLES ===== */
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #06b6d4;
+            --accent-light: #22d3ee;
+            --accent-dark: #0891b2;
+            --accent-ecommerce: #f97316;
+            --data-driven: #3b82f6;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--data-driven));
+            border-radius: 2px;
+        }
+
+        .data-title {
+            color: var(--data-driven);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--data-driven), #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-data {
+            background: linear-gradient(135deg, var(--data-driven), #1d4ed8);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--data-driven);
+            color: var(--data-driven);
+        }
+
+        .btn-outline:hover {
+            background: var(--data-driven);
+            color: white;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            background-color: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+            height: 80px;
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--data-driven);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+            color: var(--data-driven);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--data-driven);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .data-visualization {
+            width: 100%;
+            max-width: 500px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .funnel-chart {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .funnel-step {
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.4));
+            border-left: 4px solid var(--data-driven);
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            transition: var(--transition);
+        }
+
+        .funnel-step:hover {
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.5));
+        }
+
+        .funnel-step-1 { top: 0; width: 100%; }
+        .funnel-step-2 { top: 60px; width: 80%; }
+        .funnel-step-3 { top: 120px; width: 60%; }
+        .funnel-step-4 { top: 180px; width: 40%; }
+        .funnel-step-5 { top: 240px; width: 20%; }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--data-driven);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== DATA-DRIVEN METRICS ===== */
+        .data-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--data-driven), #1d4ed8);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--data-driven), #1d4ed8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* ===== DATA-DRIVEN APPROACH ===== */
+        .data-approach {
+            background-color: var(--secondary);
+            padding: 100px 0;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .approach-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .approach-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--data-driven);
+        }
+
+        .approach-icon {
+            font-size: 2.5rem;
+            color: var(--data-driven);
+            margin-bottom: 20px;
+        }
+
+        /* ===== FUNNEL ANALYSIS ===== */
+        .funnel-analysis {
+            padding: 100px 0;
+        }
+
+        .funnel-stages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .funnel-stage {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .stage-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 30px;
+            height: 30px;
+            background: var(--data-driven);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+        }
+
+        .dropoff-rate {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* ===== DATA-DRIVEN DECISIONS ===== */
+        .data-decisions {
+            background-color: var(--secondary);
+            padding: 100px 0;
+        }
+
+        .decision-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .decision-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .decision-bad {
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .decision-good {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .decision-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .bad-badge {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+
+        .good-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: #86efac;
+        }
+
+        /* ===== CASE STUDY - DATA-DRIVEN ===== */
+        .case-study {
+            padding: 100px 0;
+        }
+
+        .case-study-content {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+
+        .case-study-header {
+            background: linear-gradient(135deg, var(--data-driven), #1d4ed8);
+            padding: 40px;
+        }
+
+        .data-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .data-point {
+            text-align: center;
+        }
+
+        .data-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--data-driven);
+            margin-bottom: 10px;
+        }
+
+        /* ===== ROAS OPTIMIZER ===== */
+        .roas-optimizer {
+            background-color: var(--secondary);
+            padding: 100px 0;
+        }
+
+        .optimizer-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .optimizer-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-group label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .input-group input {
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .optimizer-results {
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid var(--success);
+            display: none;
+        }
+
+        /* ===== FREE AUDIT CTA ===== */
+        .audit-cta {
+            background: linear-gradient(135deg, var(--data-driven), #1d4ed8);
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 100px auto;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .audit-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .audit-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== DATA REPORT ===== */
+        .data-report {
+            padding: 100px 0;
+        }
+
+        .report-preview {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+
+        .report-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .report-metric {
+            text-align: center;
+            padding: 20px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #0a0f1c;
+            padding: 80px 0 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--data-driven), #1d4ed8);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--data-driven);
+            font-size: 1.2rem;
+            width: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--data-driven);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(51, 65, 85, 0.3);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            .data-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            header {
+                height: 70px;
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 100px 30px 30px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-menu-btn.active i::before {
+                content: '\f00d';
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .data-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .audit-cta {
+                padding: 60px 20px;
+                margin: 60px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .audit-cta h2 {
+                font-size: 2rem;
+            }
+            
+            .funnel-stages {
+                grid-template-columns: 1fr;
+            }
+            
+            .decision-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-chart-line"></i>Sihan<span>Sikder</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#metrics">Metrics</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#funnel">Funnel Analysis</a></li>
+                <li><a href="#roas">ROAS Optimizer</a></li>
+                <li><a href="#audit" class="btn btn-data">Free Audit</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero section" id="home">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-text fade-in">
+                <h1>Increase Your E-commerce <span>ROAS by 200-300%</span> With Data-Driven Facebook Ads</h1>
+                <p>I analyze your complete customer journey, identify exact drop-off points, and implement data-backed solutions to reduce ad waste and maximize ROI.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#audit" class="btn btn-data">
+                        <i class="fas fa-search-dollar"></i> Get Free Funnel Analysis
+                    </a>
+                    <a href="#funnel" class="btn btn-outline">
+                        <i class="fas fa-filter"></i> See Funnel Breakdown
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
+                <div class="data-visualization">
+                    <h3 style="margin-bottom: 20px; color: var(--data-driven);">Customer Journey Drop-off Analysis</h3>
+                    <div class="funnel-chart">
+                        <div class="funnel-step funnel-step-1">
+                            <span>Ad Impression: 10,000</span>
+                        </div>
+                        <div class="funnel-step funnel-step-2">
+                            <span>Website Visit: 1,200 (88% drop)</span>
+                        </div>
+                        <div class="funnel-step funnel-step-3">
+                            <span>Add to Cart: 180 (85% drop)</span>
+                        </div>
+                        <div class="funnel-step funnel-step-4">
+                            <span>Checkout Start: 36 (80% drop)</span>
+                        </div>
+                        <div class="funnel-step funnel-step-5">
+                            <span>Purchase: 9 (75% drop)</span>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 20px;">Where are YOUR customers dropping off?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data-Driven Metrics -->
+    <section class="section" id="metrics">
+        <div class="container">
+            <h2 class="section-title fade-in">Data-Driven <span class="data-title">Results</span> I Deliver</h2>
+            <p class="section-subtitle fade-in">Measurable improvements based on comprehensive funnel analysis and optimization.</p>
+            
+            <div class="data-metrics">
+                <div class="metric-card fade-in">
+                    <div class="metric-number">200-300%</div>
+                    <div class="metric-label">ROAS Increase</div>
+                    <p style="color: var(--text-secondary); margin-top: 15px; font-size: 0.95rem;">By fixing funnel leaks and optimizing conversion paths</p>
+                </div>
+                
+                <div class="metric-card fade-in">
+                    <div class="metric-number">40-60%</div>
+                    <div class="metric-label">Reduction in Ad Waste</div>
+                    <p style="color: var(--text-secondary); margin-top: 15px; font-size: 0.95rem;">By eliminating traffic to non-converting pages</p>
+                </div>
+                
+                <div class="metric-card fade-in">
+                    <div class="metric-number">25-50%</div>
+                    <div class="metric-label">Increase in Conversions</div>
+                    <p style="color: var(--text-secondary); margin-top: 15px; font-size: 0.95rem;">By optimizing customer journey touchpoints</p>
+                </div>
+                
+                <div class="metric-card fade-in">
+                    <div class="metric-number">$2.8M+</div>
+                    <div class="metric-label">E-commerce Sales Generated</div>
+                    <p style="color: var(--text-secondary); margin-top: 15px; font-size: 0.95rem;">Through data-driven Facebook ads strategies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data-Driven Approach -->
+    <section class="data-approach section" id="approach">
+        <div class="container">
+            <h2 class="section-title fade-in">My <span class="data-title">Data-Driven</span> Approach</h2>
+            <p class="section-subtitle fade-in">No guesswork. Every decision is backed by comprehensive data analysis.</p>
+            
+            <div class="approach-grid">
+                <div class="approach-card fade-in">
+                    <div class="approach-icon">
+                        <i class="fas fa-funnel-dollar"></i>
+                    </div>
+                    <h3>1. Funnel Analysis & Mapping</h3>
+                    <p style="color: var(--text-secondary); margin-top: 15px;">Track every touchpoint from ad click to purchase. Identify EXACTLY where customers drop off and why.</p>
+                    <ul style="color: var(--text-secondary); margin-top: 15px; padding-left: 20px;">
+                        <li>Session recording analysis</li>
+                        <li>Heatmap tracking</li>
+                        <li>Conversion path mapping</li>
+                    </ul>
+                </div>
+                
+                <div class="approach-card fade-in">
+                    <div class="approach-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>2. Data Collection & Validation</h3>
+                    <p style="color: var(--text-secondary); margin-top: 15px;">Implement accurate tracking to collect reliable data. Fix iOS 14+ tracking gaps and data discrepancies.</p>
+                    <ul style="color: var(--text-secondary); margin-top: 15px; padding-left: 20px;">
+                        <li>Conversion API setup</li>
+                        <li>Server-side tracking</li>
+                        <li>Data validation protocols</li>
+                    </ul>
+                </div>
+                
+                <div class="approach-card fade-in">
+                    <div class="approach-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>3. Optimization & Testing</h3>
+                    <p style="color: var(--text-secondary); margin-top: 15px;">Systematic A/B testing based on data insights. Optimize each funnel stage with statistically valid experiments.</p>
+                    <ul style="color: var(--text-secondary); margin-top: 15px; padding-left: 20px;">
+                        <li>Statistical significance testing</li>
+                        <li>Multivariate testing</li>
+                        <li>Incremental improvement tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funnel Analysis -->
+    <section class="funnel-analysis section" id="funnel">
+        <div class="container">
+            <h2 class="section-title fade-in">Where Are Your <span class="data-title">Customers Dropping Off?</span></h2>
+            <p class="section-subtitle fade-in">Most e-commerce stores lose 90-95% of customers somewhere in this journey.</p>
+            
+            <div class="funnel-stages">
+                <div class="funnel-stage fade-in">
+                    <div class="stage-number">1</div>
+                    <h3>Ad → Landing Page</h3>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">Typical drop-off: <strong>70-90%</strong></p>
+                    <div class="dropoff-rate">HIGH DROPOFF AREA</div>
+                    <p style="color: var(--text-secondary); margin-top: 15px;"><strong>Common Issues:</strong> Ad-to-page mismatch, slow loading, unclear value proposition</p>
+                </div>
+                
+                <div class="funnel-stage fade-in">
+                    <div class="stage-number">2</div>
+                    <h3>Browse → Add to Cart</h3>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">Typical drop-off: <strong>80-90%</strong></p>
+                    <div class="dropoff-rate">CRITICAL DROPOFF AREA</div>
+                    <p style="color: var(--text-secondary); margin-top: 15px;"><strong>Common Issues:</strong> Poor product pages, missing trust signals, unclear pricing</p>
+                </div>
+                
+                <div class="funnel-stage fade-in">
+                    <div class="stage-number">3</div>
+                    <h3>Checkout → Purchase</h3>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">Typical drop-off: <strong>60-80%</strong></p>
+                    <div class="dropoff-rate">HIGH CONVERSION AREA</div>
+                    <p style="color: var(--text-secondary); margin-top: 15px;"><strong>Common Issues:</strong> Complicated checkout, hidden costs, payment failures</p>
+                </div>
+            </div>
+            
+            <div style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; padding: 30px; margin-top: 50px; border: 1px solid rgba(59, 130, 246, 0.3);">
+                <h3 style="color: var(--data-driven); margin-bottom: 15px;">My Funnel Optimization Process:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">1. Data Collection</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Install comprehensive tracking across all funnel stages</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">2. Analysis</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Identify exact drop-off points and root causes</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">3. Hypothesis</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Develop data-backed solutions for each problem</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">4. Test & Measure</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Implement changes and measure impact on metrics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data-Driven Decisions -->
+    <section class="data-decisions section" id="decisions">
+        <div class="container">
+            <h2 class="section-title fade-in"><span class="data-title">Data-Driven</span> vs Idea-Based Decisions</h2>
+            <p class="section-subtitle fade-in">The difference between guessing what might work and knowing what does work.</p>
+            
+            <div class="decision-comparison">
+                <div class="decision-card decision-bad fade-in">
+                    <div class="decision-badge bad-badge">IDEA-BASED APPROACH</div>
+                    <h3>"Let's try this creative"</h3>
+                    <ul style="color: var(--text-secondary); margin-top: 20px;">
+                        <li style="margin-bottom: 10px;">Decisions based on opinions</li>
+                        <li style="margin-bottom: 10px;">No clear measurement framework</li>
+                        <li style="margin-bottom: 10px;">High risk of wasted spend</li>
+                        <li style="margin-bottom: 10px;">Results are unpredictable</li>
+                        <li>Scalability is difficult</li>
+                    </ul>
+                </div>
+                
+                <div class="decision-card decision-good fade-in">
+                    <div class="decision-badge good-badge">DATA-DRIVEN APPROACH</div>
+                    <h3>"This creative performs 42% better"</h3>
+                    <ul style="color: var(--text-secondary); margin-top: 20px;">
+                        <li style="margin-bottom: 10px;">Decisions based on data</li>
+                        <li style="margin-bottom: 10px;">Clear KPIs and tracking</li>
+                        <li style="margin-bottom: 10px;">Minimized wasted spend</li>
+                        <li style="margin-bottom: 10px;">Predictable, repeatable results</li>
+                        <li>Systematic scaling</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: var(--card-bg); border-radius: 12px; padding: 30px; margin-top: 50px; border: 1px solid var(--border-color);">
+                <h3 style="color: var(--data-driven); margin-bottom: 20px;">My Data Sources for Decision Making:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 20px;">
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;"><i class="fas fa-chart-bar" style="color: var(--data-driven); margin-right: 10px;"></i>Facebook Analytics</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Campaign performance, audience insights, conversion data</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;"><i class="fas fa-shopping-cart" style="color: var(--data-driven); margin-right: 10px;"></i>E-commerce Platform</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Sales data, product performance, customer behavior</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;"><i class="fas fa-tachometer-alt" style="color: var(--data-driven); margin-right: 10px;"></i>Google Analytics</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">User behavior, funnel analysis, attribution modeling</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;"><i class="fas fa-eye" style="color: var(--data-driven); margin-right: 10px;"></i>Heatmap Tools</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Click tracking, scroll depth, user interaction patterns</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROAS Optimizer -->
+    <section class="roas-optimizer section" id="roas">
+        <div class="container">
+            <h2 class="section-title fade-in">Calculate Your <span class="data-title">ROAS Improvement</span> Potential</h2>
+            <p class="section-subtitle fade-in">See how much revenue you could gain by fixing funnel leaks and optimizing your customer journey.</p>
+            
+            <div class="optimizer-container fade-in">
+                <div class="optimizer-inputs">
+                    <div class="input-group">
+                        <label for="monthlyTraffic">Monthly Website Visitors</label>
+                        <input type="number" id="monthlyTraffic" placeholder="e.g., 10000" value="10000">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="conversionRate">Current Conversion Rate (%)</label>
+                        <input type="number" id="conversionRate" placeholder="e.g., 2" value="2" step="0.1">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="averageOrder">Average Order Value ($)</label>
+                        <input type="number" id="averageOrder" placeholder="e.g., 100" value="100">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="adSpend">Monthly Ad Spend ($)</label>
+                        <input type="number" id="adSpend" placeholder="e.g., 5000" value="5000">
+                    </div>
+                </div>
+                
+                <button class="btn btn-data" id="calculateBtn" style="width: 100%;">
+                    <i class="fas fa-calculator"></i> Calculate ROAS Improvement Potential
+                </button>
+                
+                <div class="optimizer-results" id="optimizerResults">
+                    <h3 style="color: var(--success); margin-bottom: 20px;">Your ROAS Optimization Potential:</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 5px;">Current ROAS</h4>
+                            <div id="currentRoas" style="font-size: 1.8rem; font-weight: 800; color: var(--danger);">0x</div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 5px;">Potential ROAS</h4>
+                            <div id="potentialRoas" style="font-size: 1.8rem; font-weight: 800; color: var(--success);">0x</div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 5px;">Revenue Increase</h4>
+                            <div id="revenueIncrease" style="font-size: 1.8rem; font-weight: 800; color: var(--data-driven);">$0</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(59, 130, 246, 0.1); border-radius: 8px; padding: 20px; margin-top: 20px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">Optimization Opportunities:</h4>
+                        <ul style="color: var(--text-secondary);">
+                            <li id="opp1">Fix tracking gaps (15-40% more conversions)</li>
+                            <li id="opp2">Optimize landing pages (20-50% better conversion)</li>
+                            <li id="opp3">Improve checkout flow (30-60% less abandonment)</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#audit" class="btn btn-data" style="margin-top: 30px; display: block; text-align: center;">
+                        <i class="fas fa-search-dollar"></i> Get Customized Optimization Plan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study -->
+    <section class="case-study section" id="case-study">
+        <div class="container">
+            <h2 class="section-title fade-in">Case Study: <span class="data-title">Data-Driven</span> E-commerce Transformation</h2>
+            <p class="section-subtitle fade-in">How we increased ROAS by 280% through comprehensive funnel analysis and optimization.</p>
+            
+            <div class="case-study-content fade-in">
+                <div class="case-study-header">
+                    <h3 style="color: white;">The Challenge: Declining ROAS Despite Increased Spend</h3>
+                    <p style="color: rgba(255,255,255,0.9); margin-top: 10px;">E-commerce brand spending $12,000/month with ROAS dropping from 3.5 to 1.8. Facebook showed 420 conversions, but actual sales were only 152.</p>
+                </div>
+                
+                <div style="padding: 40px;">
+                    <h4 style="color: var(--data-driven); margin-bottom: 20px;">Data Analysis Findings:</h4>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 30px 0;">
+                        <div>
+                            <h5 style="color: var(--text-primary); margin-bottom: 10px;">Tracking Issue</h5>
+                            <p style="color: var(--text-secondary);">Facebook missing 64% of conversions due to iOS restrictions</p>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--text-primary); margin-bottom: 10px;">Funnel Leak</h5>
+                            <p style="color: var(--text-secondary);">72% drop-off at add-to-cart stage due to unclear pricing</p>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--text-primary); margin-bottom: 10px;">Audience Problem</h5>
+                            <p style="color: var(--text-secondary);">Top of funnel targeting too broad, attracting non-buyers</p>
+                        </div>
+                    </div>
+                    
+                    <h4 style="color: var(--data-driven); margin: 40px 0 20px;">Data-Driven Solutions Implemented:</h4>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 8px; border: 1px solid var(--success);">
+                            <h5 style="color: var(--text-primary); margin-bottom: 10px;">Conversion API</h5>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Implemented server-side tracking for 94% accuracy</p>
+                        </div>
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 8px; border: 1px solid var(--success);">
+                            <h5 style="color: var(--text-primary); margin-bottom: 10px;">Funnel Optimization</h5>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Redesigned product pages with clear pricing and CTAs</p>
+                        </div>
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 8px; border: 1px solid var(--success);">
+                            <h5 style="color: var(--text-primary); margin-bottom: 10px;">Audience Refinement</h5>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Created lookalikes from actual buyers vs all visitors</p>
+                        </div>
+                    </div>
+                    
+                    <div class="data-points">
+                        <div class="data-point">
+                            <div class="data-value">6.8x ROAS</div>
+                            <p style="color: var(--text-secondary);">After optimization</p>
+                        </div>
+                        <div class="data-point">
+                            <div class="data-value">+280%</div>
+                            <p style="color: var(--text-secondary);">ROAS increase</p>
+                        </div>
+                        <div class="data-point">
+                            <div class="data-value">-$4,800</div>
+                            <p style="color: var(--text-secondary);">Monthly wasted spend eliminated</p>
+                        </div>
+                        <div class="data-point">
+                            <div class="data-value">+226%</div>
+                            <p style="color: var(--text-secondary);">Monthly revenue at same ad spend</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Report -->
+    <section class="data-report section" id="report">
+        <div class="container">
+            <h2 class="section-title fade-in">Free <span class="data-title">Data-Driven</span> Funnel Analysis Report</h2>
+            <p class="section-subtitle fade-in">Get a comprehensive analysis of your customer journey and identify exact optimization opportunities.</p>
+            
+            <div class="report-preview fade-in">
+                <h3 style="color: var(--data-driven); margin-bottom: 30px;">Your Funnel Analysis Report Will Include:</h3>
+                
+                <div class="report-metrics">
+                    <div class="report-metric">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">Funnel Visualization</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Complete customer journey mapping with drop-off rates</p>
+                    </div>
+                    <div class="report-metric">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">Leak Detection</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Exact points where customers abandon the journey</p>
+                    </div>
+                    <div class="report-metric">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">ROI Opportunity</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Potential revenue increase from optimization</p>
+                    </div>
+                    <div class="report-metric">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">Action Plan</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Prioritized steps to fix leaks and increase conversions</p>
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(29, 78, 216, 0.1)); border-radius: 12px; padding: 30px; margin-top: 30px;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 15px;">What You'll Discover:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div>
+                            <p style="color: var(--text-secondary);"><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> Your exact conversion rate at each funnel stage</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--text-secondary);"><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> Where you're losing the most potential customers</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--text-secondary);"><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> How much revenue each leak is costing you</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--text-secondary);"><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> Specific fixes for each identified problem</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Audit CTA -->
+    <section class="audit-cta" id="audit">
+        <div class="container">
+            <h2 class="fade-in">Free Data-Driven Funnel Analysis</h2>
+            <p class="fade-in">I'll analyze your complete customer journey and show you exactly where money is leaking and how to fix it.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 40px 0;">
+                <div style="text-align: left;">
+                    <h4 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-chart-line" style="color: white;"></i> What You Get:</h4>
+                    <ul style="color: rgba(255,255,255,0.9);">
+                        <li style="margin-bottom: 10px;">Complete funnel analysis report</li>
+                        <li style="margin-bottom: 10px;">Exact drop-off point identification</li>
+                        <li style="margin-bottom: 10px;">ROI improvement calculation</li>
+                        <li>Prioritized action plan</li>
+                    </ul>
+                </div>
+                
+                <div style="text-align: left;">
+                    <h4 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-clock" style="color: white;"></i> Timeline:</h4>
+                    <ul style="color: rgba(255,255,255,0.9);">
+                        <li style="margin-bottom: 10px;">48-hour analysis turnaround</li>
+                        <li style="margin-bottom: 10px;">30-minute strategy call</li>
+                        <li style="margin-bottom: 10px;">Detailed written report</li>
+                        <li>No sales pitch - just data</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <a href="https://wa.me/8801914795242?text=Hi%20Sihan,%20I'd%20like%20a%20free%20Data-Driven%20Funnel%20Analysis%20for%20my%20e-commerce%20store" target="_blank" class="btn fade-in" style="background: white; color: #1d4ed8; font-size: 1.1rem; padding: 18px 40px;">
+                <i class="fab fa-whatsapp"></i> Get Free Funnel Analysis on WhatsApp
+            </a>
+            
+            <p class="fade-in" style="margin-top: 30px; font-size: 0.9rem; opacity: 0.9;">Limited to 5 free analyses per month. Current availability: 3 spots left.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sihan Sikder</h3>
+                    <p style="color: var(--text-secondary); margin-top: 15px;">Data-Driven Facebook Ads Strategist specializing in e-commerce funnel optimization, ROAS improvement, and ad waste reduction.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sihansikder2021" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/sihan-sikder/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:sihan25700@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://wa.me/8801914795242" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Data-Driven Focus</h3>
+                    <ul class="footer-links">
+                        <li><a href="#metrics">ROAS Improvement</a></li>
+                        <li><a href="#funnel">Funnel Analysis</a></li>
+                        <li><a href="#decisions">Data-Driven Decisions</a></li>
+                        <li><a href="#roas">ROAS Calculator</a></li>
+                        <li><a href="#case-study">Case Study</a></li>
+                        <li><a href="#report">Free Analysis</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+8801914795242 (WhatsApp)</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>sihan25700@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <span>E-commerce brands worldwide</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Sihan Sikder. All rights reserved. | Data-Driven Facebook Ads for E-commerce</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking a link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                });
+            });
+            
+            // Scroll animations
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const checkScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            checkScroll();
+            window.addEventListener('scroll', checkScroll);
+            
+            // ROAS Optimizer Calculator
+            const calculateBtn = document.getElementById('calculateBtn');
+            const optimizerResults = document.getElementById('optimizerResults');
+            
+            calculateBtn.addEventListener('click', function() {
+                // Get input values
+                const monthlyTraffic = parseFloat(document.getElementById('monthlyTraffic').value) || 10000;
+                const conversionRate = parseFloat(document.getElementById('conversionRate').value) || 2;
+                const averageOrder = parseFloat(document.getElementById('averageOrder').value) || 100;
+                const adSpend = parseFloat(document.getElementById('adSpend').value) || 5000;
+                
+                // Calculate current metrics
+                const currentConversions = monthlyTraffic * (conversionRate / 100);
+                const currentRevenue = currentConversions * averageOrder;
+                const currentROAS = currentRevenue / adSpend;
+                
+                // Calculate potential improvements
+                const potentialConversionRate = conversionRate * 1.5; // 50% improvement potential
+                const potentialConversions = monthlyTraffic * (potentialConversionRate / 100);
+                const potentialRevenue = potentialConversions * averageOrder;
+                const potentialROAS = potentialRevenue / adSpend;
+                
+                // Calculate revenue increase
+                const revenueIncrease = potentialRevenue - currentRevenue;
+                
+                // Update results
+                document.getElementById('currentRoas').textContent = currentROAS.toFixed(1) + 'x';
+                document.getElementById('potentialRoas').textContent = potentialROAS.toFixed(1) + 'x';
+                document.getElementById('revenueIncrease').textContent = '$' + revenueIncrease.toLocaleString();
+                
+                // Update opportunity statements
+                document.getElementById('opp1').textContent = `Fix tracking gaps (${Math.round((currentConversions * 0.3))} more conversions/month)`;
+                document.getElementById('opp2').textContent = `Optimize landing pages (${Math.round(conversionRate * 0.3)}% better conversion rate)`;
+                document.getElementById('opp3').textContent = `Improve checkout flow (${Math.round(currentConversions * 0.4)} fewer abandoned carts)`;
+                
+                // Show results
+                optimizerResults.style.display = 'block';
+                optimizerResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+            
+            // Animated funnel chart interaction
+            const funnelSteps = document.querySelectorAll('.funnel-step');
+            funnelSteps.forEach(step => {
+                step.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                step.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Smooth scroll with header offset
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = window.innerWidth <= 768 ? 70 : 80;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Auto-scroll fix for hash URLs
+            window.addEventListener('load', function() {
+                if (window.location.hash) {
+                    const targetId = window.location.hash;
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = window.innerWidth <= 768 ? 70 : 80;
+                        setTimeout(() => {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - headerHeight,
+                                behavior: 'smooth'
+                            });
+                        }, 100);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
